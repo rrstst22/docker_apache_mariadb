@@ -1,8 +1,8 @@
 version: '3.7'
 
-services:    
-  php-apache:
-    container_name: php-apache
+services:
+  web:
+    container_name: web
     build: ./docker/php
     volumes:
     - ./server:/var/www/html
@@ -15,7 +15,7 @@ services:
 
   db:
     image: mariadb
-    container_name: db
+    container_name: mariadb
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: database
@@ -27,7 +27,7 @@ services:
     - ./docker/db/conf/mariadb.cnf:/etc/mysql/mariadb.cnf
     ports:
     - 3306:3306
-    
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
     ports:
