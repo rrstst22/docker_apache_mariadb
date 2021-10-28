@@ -2,11 +2,11 @@ version: '3.7'
 
 services:    
   php-apache:
-    container_name: test-php
+    container_name: php-apache
     build: ./docker/php
     volumes:
     - ./server:/var/www/html
-    - ./docker/php/000-default.conf:/etc/apache2/sites-available/000-default.conf
+    - ./docker/apache/000-default.conf:/etc/apache2/sites-available/000-default.conf
     - ./docker/php/php.ini:/usr/local/etc/php/php.ini
     ports:
     - 80:80
@@ -15,7 +15,7 @@ services:
 
   db:
     image: mariadb
-    container_name: test-db
+    container_name: db
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: database
@@ -24,7 +24,7 @@ services:
       TZ: 'Asia/Tokyo'
     volumes:
     - ./docker/db/data:/var/lib/mysql
-    - ./docker/db/mariadb.cnf:/etc/mysql/mariadb.cnf
+    - ./docker/db/conf/mariadb.cnf:/etc/mysql/mariadb.cnf
     ports:
     - 3306:3306
     
