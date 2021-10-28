@@ -15,7 +15,7 @@ services:
 
   db:
     image: mariadb
-    container_name: mariadb
+    container_name: mariadb:10.6.4
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: database
